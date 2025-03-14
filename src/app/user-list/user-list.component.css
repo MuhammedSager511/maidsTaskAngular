@@ -130,3 +130,12 @@
     transform: rotate(360deg);
   }
 }
+.logo-container {
+  text-align: left;
+  margin-bottom: 20px; /* Adjust the spacing as needed */
+}
+
+.logo {
+  width: 100px; /* Set the desired width */
+  height: auto;
+}
