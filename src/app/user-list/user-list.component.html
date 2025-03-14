@@ -1,0 +1,38 @@
+<div class="container">
+  <!-- Search Field -->
+  <div class="search-container">
+    <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="🔍 Search for user by ID">
+  </div>
+
+  <!-- Display Search Result -->
+  <div *ngIf="searchUser" class="search-result">
+    <a [routerLink]="['/user', searchUser.id]" class="user-card highlight">
+      <img [src]="searchUser.avatar" [alt]="searchUser.first_name">
+      <h3>{{ searchUser.first_name }} {{ searchUser.last_name }}</h3>
+      <p>{{ searchUser.email }}</p>
+    </a>
+  </div>
+
+  <!-- List Title -->
+  <h2 class="title">📋 User List (Page {{ currentPage }})</h2>
+
+  <!-- Users List -->
+  <div class="users">
+    <a *ngFor="let user of users" [routerLink]="['/user', user.id]" class="user-card" appHoverEffect>
+      <img [src]="user.avatar" [alt]="user.first_name">
+      <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+      <p>{{ user.email }}</p>
+    </a>
+  </div>
+
+  <!-- Pagination Buttons -->
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1" class="btn">⬅ Previous</button>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="btn">Next ➡</button>
+  </div>
+
+  <!-- Loading Indicator -->
+  <div *ngIf="userService.loading$ | async" class="loading-overlay">
+    <div class="spinner"></div>
+  </div>
+</div>

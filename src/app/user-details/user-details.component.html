@@ -1,0 +1,14 @@
+<div *ngIf="user" class="container">
+  <!-- Back Button -->
+  <button (click)="goBack()" class="back-btn">&#8592; Back</button>
+
+  <!-- Details Title -->
+  <h2 class="user-details-title">User Details</h2>
+
+  <!-- User Card -->
+  <div class="user-card">
+    <img [src]="user.avatar" [alt]="user.first_name" class="user-avatar">
+    <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+    <p>{{ user.email }}</p>
+  </div>
+</div>
